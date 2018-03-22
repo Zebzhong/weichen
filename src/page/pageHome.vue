@@ -4,12 +4,16 @@
   </div>
 </template>
 <script>
+import { formatTime } from '@/js/unit'
 export default {
   name: 'webHome',
   data () {
     return {
-      msg: 'Hello Word , you web Home page !'
+      msg: 'init'
     }
+  },
+  created () {
+    this.msg = 'Hello Word ' + formatTime(new Date())
   }
 }
 </script>
