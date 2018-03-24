@@ -1,4 +1,5 @@
 const home = r => require.ensure([], () => r(require('@/page/Home')), 'home')
+const lesson = r => require.ensure([], () => r(require('@/page/Lesson')), 'lesson')
 
 export default {
   routes: [
@@ -9,6 +10,10 @@ export default {
     {
       path: '/home',
       component: home
+    },
+    {
+      path: '/lesson',
+      component: lesson
     }
   ]
 }

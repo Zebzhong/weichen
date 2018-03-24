@@ -3,5 +3,21 @@ $gray3:#333;
 $orange:#e8a50c;
 
 .ft-green{
-  color:$green;
+  color: $green;
+}
+.ft-orange{
+  color: $orange;
+}
+.ellipsis{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@svg 1px-border {
+  height: 2px;
+  @rect {
+    fill: var(--color, black);
+    width: 100%;
+    height: 50%;
+  }
 }

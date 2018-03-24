@@ -7,42 +7,19 @@
       </header>
       <section class="slider"></section>
       <nav class="lesson-list">
-        <a class="lesson-item" v-for="(item,index) in lessonNav" :key="index">
+        <router-link class="lesson-item" :to="{path: '/lesson', query: {lessonName: item.lessonName, id: item.id}}" v-for="(item,index) in lessonNav" :key="index">
           <img class="lesson-item-icon" :src="item.imgUrl" alt="">
           <span class="lesson-item-name">{{item.lessonName}}</span>
-        </a>
+        </router-link>
       </nav>
-      <section class="tab-box">
-        <nav class="tab-nav">
-          <div class="tab-nav-top">
-            <a class="tab-nav-item active">系列课程</a>
-            <a class="tab-nav-item">精品小课</a>
-          </div>
-          <div class="tab-border"></div>
-        </nav>
-        <section class="tab-cont">
-          <div class="tab-cont-item" v-for="(item,index) in lessonList" :key="index">
-            <div class="cont-item-img">
-              <a>
-                <img :src="item.imgUrl" alt="">
-              </a>
-            </div>
-            <div class="cont-item-intro">
-              <h3 class="item-intro-tit">{{item.title}}</h3>
-              <p class="item-intro-subtit">{{item.subtit}}</p>
-              <div class="item-intro-info">
-                <i>{{item.view}}次学习</i>
-                <a class="ft-green">{{item.price | formatPrice}}</a>
-              </div>
-            </div>
-          </div>
-        </section>
-      </section>
+      <tab-box :lessonList="lessonList"></tab-box>
+      <foot-bottom></foot-bottom>
     </div>
   </div>
 </template>
 <script>
-import { formatTime } from '@/js/unit'
+import tabBox from '@/components/TabBox'
+import footBottom from '@/components/Footer'
 export default {
   name: 'webHome',
   data () {
@@ -51,43 +28,53 @@ export default {
       lessonNav: [
         {
           lessonName: '语文',
-          imgUrl: require('../assets/images/yuwen.png')
+          imgUrl: require('../assets/images/yuwen.png'),
+          id: 1
         },
         {
           lessonName: '数学',
-          imgUrl: require('../assets/images/shuxue.png')
+          imgUrl: require('../assets/images/shuxue.png'),
+          id: 2
         },
         {
           lessonName: '英语',
-          imgUrl: require('../assets/images/yingyu.png')
+          imgUrl: require('../assets/images/yingyu.png'),
+          id: 3
         },
         {
           lessonName: '政治',
-          imgUrl: require('../assets/images/zhengzhi.png')
+          imgUrl: require('../assets/images/zhengzhi.png'),
+          id: 4
         },
         {
           lessonName: '历史',
-          imgUrl: require('../assets/images/lishi.png')
+          imgUrl: require('../assets/images/lishi.png'),
+          id: 5
         },
         {
           lessonName: '地理',
-          imgUrl: require('../assets/images/dili.png')
+          imgUrl: require('../assets/images/dili.png'),
+          id: 6
         },
         {
           lessonName: '化学',
-          imgUrl: require('../assets/images/huaxue.png')
+          imgUrl: require('../assets/images/huaxue.png'),
+          id: 7
         },
         {
           lessonName: '生物',
-          imgUrl: require('../assets/images/shengwu.png')
+          imgUrl: require('../assets/images/shengwu.png'),
+          id: 8
         },
         {
           lessonName: '物理',
-          imgUrl: require('../assets/images/wuli.png')
+          imgUrl: require('../assets/images/wuli.png'),
+          id: 9
         },
         {
           lessonName: '其他',
-          imgUrl: require('../assets/images/qita.png')
+          imgUrl: require('../assets/images/qita.png'),
+          id: 10
         }
       ],
       lessonList: [
@@ -115,14 +102,9 @@ export default {
       ]
     }
   },
-  created () {
-    this.msg = 'Hello Word ' + formatTime(new Date())
-  },
-  filters: {
-    formatPrice: function (value) {
-      if (value === 0) return '免费'
-      return '¥' + value
-    }
+  components: {
+    tabBox,
+    footBottom
   }
 }
 </script>
@@ -132,6 +114,9 @@ export default {
 .container{
   // padding-top:84px;
   background-color:#d2d2d2;
+  padding-bottom: 98px;
+  box-sizing: border-box;
+  min-height: 100vh;
 }
 .head{
   /* position: fixed;
@@ -189,69 +174,6 @@ export default {
     .lesson-item-name{
       font-size:24px;
       color:$gray3;
-    }
-  }
-}
-.tab-box{
-  @at-root .tab-nav-top{
-    display: flex;
-    justify-content: space-between;
-    background-color: #fcfcfc;
-    @at-root .tab-nav-item{
-      width: 50%;
-      height: 88px;
-      line-height: 88px;
-      color: $green;
-      font-size: 36px;
-      text-align: center;
-      background-color: #fff;
-      border-bottom:3px solid #bfbfbf;
-    }
-    .active{
-      color: $orange;
-      border-color:$orange;
-    }
-  }
-}
-.tab-cont-item{
-  height:200px;
-  box-sizing: border-box;
-  padding:25px 0;
-  overflow: hidden;
-  background-color: #fff;
-  margin-bottom: 2px;
-  @at-root .cont-item-img{
-    width: 50%;
-    height:150px;
-    float: left;
-    display: flex;
-    justify-content: center;
-    img{
-      width:300px;
-      height:100%;
-    }
-  }
-  @at-root .cont-item-intro{
-    width:50%;
-    float: left;
-    box-sizing: border-box;
-    padding-right:33px;
-    color:$gray3;
-    @at-root .item-intro-tit{
-      font-size:30px;
-      line-height: 30px;
-      margin-bottom: 20px;
-    }
-    @at-root .item-intro-subtit{
-      font-size:24px;
-      height:70px;
-      overflow: hidden;
-    }
-    @at-root .item-intro-info{
-      display: flex;
-      justify-content: space-between;
-      font-size:24px;
-      color:#757575;
     }
   }
 }
