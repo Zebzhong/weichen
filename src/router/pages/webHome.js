@@ -1,10 +1,14 @@
-import webHome from '@/page/pageHome'
+const home = r => require.ensure([], () => r(require('@/page/Home')), 'home')
 
 export default {
   routes: [
     {
-      path: '/',
-      component: webHome
+      path: '',
+      redirect: '/home'
+    },
+    {
+      path: '/home',
+      component: home
     }
   ]
 }
