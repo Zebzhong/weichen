@@ -13,7 +13,7 @@
         </router-link>
       </nav>
       <tab-box :lessonList="lessonList"></tab-box>
-      <foot-bottom></foot-bottom>
+      <foot-bottom :active=0></foot-bottom>
     </div>
   </div>
 </template>

@@ -1,27 +1,39 @@
 <template>
   <footer class="foot">
     <ul class="foot-list">
-      <li class="active">
-        <a>首页</a>
-      </li>
-      <li>
-        <a>纸条</a>
-      </li>
-      <li>
-        <a>课表</a>
-      </li>
-      <li>
-        <a>我</a>
+      <li @click="jumpUrl(item)" v-bind:key="item.id" :class="item.active?'active':''" v-for="item in navList">
+        <a>{{item.name}}</a>
       </li>
     </ul>
   </footer>
 </template>
 <script>
 export default {
+  props: {
+    // 需要高亮的导航图标 , 传入索引 从0开始
+    active: {
+      type: Number,
+      default: 0
+    }
+
+  },
   data () {
     return {
-
+      navList: [
+        {name: '首页', active: false, url: '/home'},
+        {name: '纸条', active: false, url: '/noteIndex'},
+        {name: '课程', active: false},
+        {name: '我', active: false}
+      ]
     }
+  },
+  methods: {
+    jumpUrl (item) {
+      this.$router.push(item.url)
+    }
+  },
+  created () {
+    this.navList[this.active].active = true
   }
 }
 </script>
