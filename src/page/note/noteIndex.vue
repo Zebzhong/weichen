@@ -1,13 +1,16 @@
 <template>
   <div>
-      <header>
+      <myheader>
           <div class="tab-nav">
               <a>纸条</a>
               <a>作业</a>
           </div>
-      </header>
+      </myheader>
       <div class="tab-content">
           <div>
+              <div>
+                  <router-link>纸条社区</router-link>
+              </div>
               <router-view></router-view>
           </div>
           <div></div>
@@ -18,12 +21,13 @@
 </template>
 <script>
 import footBottom from '@/components/Footer'
+import myheader from '@/components/Header'
 export default {
   data () {
     return {}
   },
   components: {
-    footBottom
+    footBottom, myheader
   }
 }
 </script>

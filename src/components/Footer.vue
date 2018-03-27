@@ -20,10 +20,10 @@ export default {
   data () {
     return {
       navList: [
-        {name: '首页', active: false, url: '/home'},
-        {name: '纸条', active: false, url: '/noteIndex'},
-        {name: '课程', active: false},
-        {name: '我', active: false}
+        {id: 0, name: '首页', active: false, url: '/home'},
+        {id: 1, name: '纸条', active: false, url: '/noteIndex'},
+        {id: 2, name: '课程', active: false},
+        {id: 3, name: '我', active: false}
       ]
     }
   },
