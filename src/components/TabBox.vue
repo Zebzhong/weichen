@@ -18,7 +18,7 @@
         </div>
         <div class="cont-item-intro">
           <h3 class="item-intro-tit ellipsis">{{item.title}}</h3>
-          <p class="item-intro-subtit ellipsis">{{item.subtit}}</p>
+          <p class="item-intro-subtit">{{item.subtit}}</p>
           <div class="item-intro-info">
             <i>{{item.view}}次学习</i>
             <a :class="[item.price === 0 ? 'ft-green':'ft-orange']">{{item.price | formatPrice}}</a>
@@ -27,7 +27,21 @@
       </div>
     </section>
     <section class="tab-cont" :class="{'active':1 === tabIndx}">
-      <div class="tab-cont-item">精品小课</div>
+      <div class="tab-cont-item"  v-for="(item,index) in goodList" :key="index">
+        <div class="cont-item-img">
+          <a>
+            <img :src="item.imgUrl" alt="">
+          </a>
+        </div>
+        <div class="cont-item-intro">
+          <h3 class="item-intro-tit ellipsis">{{item.title}}</h3>
+          <p class="item-intro-subtit">{{item.subtit}}</p>
+          <div class="item-intro-info">
+            <i>{{item.view}}次学习</i>
+            <a :class="[item.price === 0 ? 'ft-green':'ft-orange']">{{item.price | formatPrice}}</a>
+          </div>
+        </div>
+      </div>
     </section>
   </section>
 </template>
@@ -39,7 +53,7 @@ export default {
       tabNav: ['系列课程', '精品小课']
     }
   },
-  props: ['lessonList'],
+  props: ['lessonList', 'goodList'],
   filters: {
     formatPrice (value) {
       return value === 0 ? '免费' : '¥' + value
@@ -108,12 +122,12 @@ export default {
     @at-root .item-intro-tit{
       font-size:30px;
       line-height: 30px;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
     @at-root .item-intro-subtit{
       font-size:24px;
-      height:70px;
-      overflow: hidden;
+      height:80px;
+      @include multEllipsis(2);
     }
     @at-root .item-intro-info{
       display: flex;

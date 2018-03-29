@@ -1,7 +1,7 @@
 $green:#3aae95;
 $gray3:#333;
 $orange:#e8a50c;
-
+$backgroundColor: #d2d2d2;
 .ft-green{
   color: $green;
 }
@@ -12,6 +12,16 @@ $orange:#e8a50c;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+@mixin multEllipsis($line){
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $line;
+  overflow: hidden;
+}
+@mixin wh($w,$h){
+  width: $w;
+  height: $h;
 }
 @svg 1px-border {
   height: 2px;

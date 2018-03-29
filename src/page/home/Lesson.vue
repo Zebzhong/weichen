@@ -5,7 +5,7 @@
       <section class="head-tit">{{headTitle}}</section>
       <a class="head-search"></a>
     </header>
-    <tab-box :lessonList="lessonList"></tab-box>
+    <tab-box :lessonList="lessonList" :goodList="goodList"></tab-box>
   </div>
 </template>
 <script>
@@ -19,44 +19,88 @@ export default {
         {
           title: '小学语文精彩课程',
           subtit: '1-6单元详细讲解',
-          imgUrl: require('../assets/images/series_1.png'),
+          imgUrl: require('../../assets/images/series_1.png'),
           view: '2145',
           price: 0
         },
         {
           title: '小学语文精彩课程',
           subtit: '1-6单元详细讲解',
-          imgUrl: require('../assets/images/series_2.png'),
+          imgUrl: require('../../assets/images/series_2.png'),
           view: '2145',
           price: 0
         },
         {
           title: '小学语文精彩课程',
           subtit: '1-6单元详细讲解',
-          imgUrl: require('../assets/images/series_1.png'),
+          imgUrl: require('../../assets/images/series_1.png'),
           view: '2145',
           price: 0
         },
         {
           title: '小学语文精彩课程',
           subtit: '1-6单元详细讲解',
-          imgUrl: require('../assets/images/series_1.png'),
+          imgUrl: require('../../assets/images/series_1.png'),
           view: '2145',
           price: 0
         },
         {
           title: '小学语文精彩课程',
           subtit: '1-6单元详细讲解',
-          imgUrl: require('../assets/images/series_1.png'),
+          imgUrl: require('../../assets/images/series_1.png'),
           view: '2145',
           price: 0
         },
         {
           title: '小学语文精彩课程',
           subtit: '1-6单元详细讲解',
-          imgUrl: require('../assets/images/series_1.png'),
+          imgUrl: require('../../assets/images/series_1.png'),
           view: '2145',
           price: 0
+        }
+      ],
+      goodList: [
+        {
+          title: '中考语文精彩课程',
+          subtit: '知识点精讲沪教版',
+          imgUrl: require('../../assets/images/series_1.png'),
+          view: '1255',
+          price: 108
+        },
+        {
+          title: '中考语文精彩课程',
+          subtit: '知识点精讲人教版',
+          imgUrl: require('../../assets/images/series_2.png'),
+          view: '3215',
+          price: 99.5
+        },
+        {
+          title: '初一语文上学期',
+          subtit: '古诗词文言文讲解',
+          imgUrl: require('../../assets/images/series_1.png'),
+          view: '1265',
+          price: 53.6
+        },
+        {
+          title: '初一语文上学期',
+          subtit: '古诗词文言文讲解',
+          imgUrl: require('../../assets/images/series_1.png'),
+          view: '1265',
+          price: 53.6
+        },
+        {
+          title: '初一语文上学期',
+          subtit: '古诗词文言文讲解',
+          imgUrl: require('../../assets/images/series_1.png'),
+          view: '1265',
+          price: 53.6
+        },
+        {
+          title: '初一语文上学期',
+          subtit: '古诗词文言文讲解',
+          imgUrl: require('../../assets/images/series_1.png'),
+          view: '1265',
+          price: 53.6
         }
       ]
     }
@@ -76,7 +120,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import '../style/variable.scss';
+@import '../../style/variable.scss';
 .container{
   background-color:#d2d2d2;
 }
@@ -95,7 +139,7 @@ export default {
   background-color: $green;
   position:relative;
   .head-goback{
-    background:url('../assets/images/fanhui_03.png') no-repeat center left;
+    background:url('../../assets/images/fanhui_03.png') no-repeat center left;
     background-size:24px 48px;
     width:60px;
     height:100%;
@@ -110,7 +154,7 @@ export default {
     line-height:84px;
   }
   .head-search{
-    background:url('../assets/images/serach_course.png') no-repeat center right;
+    background:url('../../assets/images/serach_course.png') no-repeat center right;
     background-size:40px 40px;
     width:60px;
     height:100%;
