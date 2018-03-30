@@ -1,6 +1,6 @@
 <template>
   <header>
-    <router-link class="goback"></router-link>
+    <!-- <router-link to= class="goback"></router-link> -->
     <div class="header-content">
       <slot></slot>
     </div>
