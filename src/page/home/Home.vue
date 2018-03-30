@@ -1,10 +1,10 @@
 <template>
   <div id="webHome">
+    <header class="head">
+      <input type="text" class="search" placeholder="搜索">
+      <a class="msg-btn"></a>
+    </header>
     <div class="container">
-      <header class="head">
-        <input type="text" class="search" placeholder="搜索">
-        <a class="msg-btn"></a>
-      </header>
       <section class="slider"></section>
       <nav class="lesson-list">
         <router-link class="lesson-item" :to="{path: '/lesson', query: {lessonName: item.lessonName, id: item.id}}" v-for="(item,index) in lessonNav" :key="index">
@@ -12,9 +12,9 @@
           <span class="lesson-item-name">{{item.lessonName}}</span>
         </router-link>
       </nav>
-      <tab-box :lessonList="lessonList"></tab-box>
-      <foot-bottom :active=0></foot-bottom>
+      <tab-box :lessonList="lessonList" :goodList="goodList"></tab-box>
     </div>
+    <foot-bottom :active=0></foot-bottom>
   </div>
 </template>
 <script>
@@ -28,52 +28,52 @@ export default {
       lessonNav: [
         {
           lessonName: '语文',
-          imgUrl: require('../assets/images/yuwen.png'),
+          imgUrl: require('../../assets/images/yuwen.png'),
           id: 1
         },
         {
           lessonName: '数学',
-          imgUrl: require('../assets/images/shuxue.png'),
+          imgUrl: require('../../assets/images/shuxue.png'),
           id: 2
         },
         {
           lessonName: '英语',
-          imgUrl: require('../assets/images/yingyu.png'),
+          imgUrl: require('../../assets/images/yingyu.png'),
           id: 3
         },
         {
           lessonName: '政治',
-          imgUrl: require('../assets/images/zhengzhi.png'),
+          imgUrl: require('../../assets/images/zhengzhi.png'),
           id: 4
         },
         {
           lessonName: '历史',
-          imgUrl: require('../assets/images/lishi.png'),
+          imgUrl: require('../../assets/images/lishi.png'),
           id: 5
         },
         {
           lessonName: '地理',
-          imgUrl: require('../assets/images/dili.png'),
+          imgUrl: require('../../assets/images/dili.png'),
           id: 6
         },
         {
           lessonName: '化学',
-          imgUrl: require('../assets/images/huaxue.png'),
+          imgUrl: require('../../assets/images/huaxue.png'),
           id: 7
         },
         {
           lessonName: '生物',
-          imgUrl: require('../assets/images/shengwu.png'),
+          imgUrl: require('../../assets/images/shengwu.png'),
           id: 8
         },
         {
           lessonName: '物理',
-          imgUrl: require('../assets/images/wuli.png'),
+          imgUrl: require('../../assets/images/wuli.png'),
           id: 9
         },
         {
           lessonName: '其他',
-          imgUrl: require('../assets/images/qita.png'),
+          imgUrl: require('../../assets/images/qita.png'),
           id: 10
         }
       ],
@@ -81,23 +81,46 @@ export default {
         {
           title: '小学语文精彩课程',
           subtit: '1-6单元详细讲解',
-          imgUrl: require('../assets/images/series_1.png'),
+          imgUrl: require('../../assets/images/series_1.png'),
           view: '2145',
           price: 0
         },
         {
           title: '小学语文精彩课程',
           subtit: '1-6单元详细讲解',
-          imgUrl: require('../assets/images/series_2.png'),
+          imgUrl: require('../../assets/images/series_2.png'),
           view: '2145',
           price: 0
         },
         {
           title: '小学语文精彩课程',
           subtit: '1-6单元详细讲解',
-          imgUrl: require('../assets/images/series_1.png'),
+          imgUrl: require('../../assets/images/series_1.png'),
           view: '2145',
           price: 0
+        }
+      ],
+      goodList: [
+        {
+          title: '中考语文精彩课程',
+          subtit: '知识点精讲沪教版',
+          imgUrl: require('../../assets/images/series_1.png'),
+          view: '1255',
+          price: 108
+        },
+        {
+          title: '中考语文精彩课程',
+          subtit: '知识点精讲人教版',
+          imgUrl: require('../../assets/images/series_2.png'),
+          view: '3215',
+          price: 99.5
+        },
+        {
+          title: '初一语文上学期',
+          subtit: '古诗词文言文讲解',
+          imgUrl: require('../../assets/images/series_1.png'),
+          view: '1265',
+          price: 53.6
         }
       ]
     }
@@ -110,19 +133,18 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '../style/variable.scss';
+@import '../../style/variable.scss';
 .container{
-  // padding-top:84px;
-  background-color:#d2d2d2;
+  background-color:$backgroundColor;
+  padding-top:84px;
   padding-bottom: 98px;
   box-sizing: border-box;
-  min-height: 100vh;
 }
 .head{
-  /* position: fixed;
+  position: fixed;
   top:0;
   left:0;
-  z-index:10; */
+  z-index:10;
   padding:0 30px;
   box-sizing: border-box;
   width: 100%;
@@ -138,14 +160,14 @@ export default {
     box-sizing: border-box;
     border-radius: 5px;
     padding-left: 64px;
-    background: #fff url('../assets/images/search.png') no-repeat;
+    background: #fff url('../../assets/images/search.png') no-repeat;
     background-position: 24px center;
     background-size:31px 31px;
   }
   .msg-btn{
     width:35px;
     height: 35px;
-    background: url('../assets/images/top_msg.png') no-repeat;
+    background: url('../../assets/images/top_msg.png') no-repeat;
     background-size: cover;
   }
 }

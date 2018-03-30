@@ -22,7 +22,7 @@ export default {
       navList: [
         {id: 0, name: '首页', active: false, url: '/home'},
         {id: 1, name: '纸条', active: false, url: '/noteIndex'},
-        {id: 2, name: '课程', active: false},
+        {id: 2, name: '课程', active: false, url: '/lessonTable'},
         {id: 3, name: '我', active: false}
       ]
     }
