@@ -30,7 +30,6 @@
 import tabBox from '@/components/TabBox'
 import footBottom from '@/components/Footer'
 import 'swiper/dist/css/swiper.css'
-import '../../style/swiper.scss'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 
 export default {
@@ -238,5 +237,40 @@ export default {
       color:$gray3;
     }
   }
+}
+</style>
+<style lang="scss">
+@import '../../style/variable.scss';
+.slider{
+  height:268px;
+  background-color:#d2d2d2;
+  @at-root .myswiper{
+    height: 100%;
+    @at-root .swiper-img{
+      width:100%;
+      height:100%;
+    }
+    @at-root .slide-bullet {
+      display: block;
+      float:left;
+      margin-left:11px;
+      width:15px;
+      height:15px;
+      border:3px solid $green;
+      border-radius: 50%;
+    }
+    @at-root .slide-bullet-active{
+      background-color: $green;
+    }
+  }
+}
+.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction{
+  position: absolute;
+  left: initial;
+  right:33px;
+  bottom:15px;
+  width:80px;
+  height:15px;
+  overflow: hidden;
 }
 </style>
