@@ -1,11 +1,11 @@
 <template>
-  <div id="writeNote">
-    去贴纸条
+  <div id="noteCommunity">
+    纸条社区
   </div>
 </template>
 <script>
 export default {
-  name: 'writeNote',
+  name: 'noteCommunity',
   data () {
     return {}
   }
