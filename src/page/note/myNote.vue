@@ -1,11 +1,11 @@
 <template>
-  <div id="writeNote">
-    去贴纸条
+  <div id="myNote">
+    我的纸条
   </div>
 </template>
 <script>
 export default {
-  name: 'writeNote',
+  name: 'myNote',
   data () {
     return {}
   }
