@@ -5,7 +5,16 @@
       <a class="msg-btn"></a>
     </header>
     <div class="container">
-      <section class="slider"></section>
+      <section class="slider">
+        <swiper :options="swiperOption" ref="mySwiper" class="myswiper">
+          <!-- slides -->
+          <swiper-slide v-for="(item,index) in swiperList" :key="index">
+            <img :src="item.imgUrl" alt="" class="swiper-img">
+          </swiper-slide>
+          <!-- Optional controls -->
+          <div class="swiper-pagination"  slot="pagination"></div>
+        </swiper>
+      </section>
       <nav class="lesson-list">
         <router-link class="lesson-item" :to="{path: '/lesson', query: {lessonName: item.lessonName, id: item.id}}" v-for="(item,index) in lessonNav" :key="index">
           <img class="lesson-item-icon" :src="item.imgUrl" alt="">
@@ -20,11 +29,25 @@
 <script>
 import tabBox from '@/components/TabBox'
 import footBottom from '@/components/Footer'
+import 'swiper/dist/css/swiper.css'
+import '../../style/swiper.scss'
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
+
 export default {
   name: 'webHome',
   data () {
     return {
-      msg: 'init',
+      swiperList: [
+        {
+          imgUrl: require('../../assets/images/series_1.png')
+        },
+        {
+          imgUrl: require('../../assets/images/series_2.png')
+        },
+        {
+          imgUrl: require('../../assets/images/series_1.png')
+        }
+      ],
       lessonNav: [
         {
           lessonName: '语文',
@@ -122,12 +145,33 @@ export default {
           view: '1265',
           price: 53.6
         }
-      ]
+      ],
+      swiperOption: {
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+          bulletClass: 'slide-bullet',
+          bulletActiveClass: 'slide-bullet-active'
+        },
+        autoplay: true,
+        loop: true
+      }
     }
   },
   components: {
     tabBox,
-    footBottom
+    footBottom,
+    swiper,
+    swiperSlide
+  },
+  computed: {
+    swiper () {
+      return this.$refs.mySwiper.swiper
+    }
+  },
+  mounted () {
+  },
+  methods: {
   }
 }
 </script>
@@ -170,10 +214,6 @@ export default {
     background: url('../../assets/images/top_msg.png') no-repeat;
     background-size: cover;
   }
-}
-.slider{
-  height:268px;
-  background-color:#d2d2d2;
 }
 .lesson-list{
   padding:8px 10px;
